@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Jumbotron } from 'react-bootstrap';
+import './landing.css'
 
 
 function Landing({ updateStep }) {
@@ -13,13 +14,12 @@ function Landing({ updateStep }) {
     <div className="Landing">
       <Container>
         <Jumbotron>
-          <h1>Solo Standup</h1>
+          <h1 className="title">Solo Standup</h1>
+          <br className="my-3"/>
+          <p className="lead subtitle">Like having a standup meeting, but just with yourself</p>
+          <br className="my-3"/>
           <p>
-            This is a simple hero unit, a simple jumbotron-style component for calling
-            extra attention to featured content or information.
-          </p>
-          <p>
-            <Button variant="primary">Learn more</Button>
+            <Button variant="primary" size="lg" href="/progress" id="start">Start Your Standup</Button>
           </p>
         </Jumbotron>
       </Container>
