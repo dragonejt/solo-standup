@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Jumbotron, Form, FormGroup, FormControl, FormLabel, Table } from 'react-bootstrap';
-import sgMail from '@sendgrid/mail';
 
-sgMail.setApiKey()
+const sgMail = require('@sendgrid/mail');
+require('dotenv').config();
+
+sgMail.setApiKey("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");
 
 
-function Done({updateStep , one, two, three, updateOne, updateTwo, updateThree}) {
+function Done({ updateStep, one, two, three, updateOne, updateTwo, updateThree }) {
 
     useEffect(() => {
         updateStep(4);
@@ -19,12 +21,9 @@ function Done({updateStep , one, two, three, updateOne, updateTwo, updateThree})
             return "No, I don't need help";
         }
     }
-    function changeEmail(newEmail) {
-        var str = newEmail.toString();
-        window.localStorage.setItem("email", str)
-    }
-    function sendEmail() {
-
+    const [email, setEmail] = useState("");
+    const mailLink = () => {
+        return  "mailto:" + email + "?subject=Your%20Solo%20Standup";
     }
     function reset() {
         updateOne("");
@@ -40,36 +39,40 @@ function Done({updateStep , one, two, three, updateOne, updateTwo, updateThree})
                 <br className="my-3" />
                 <br className="my-3" />
 
-                <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr>
-                    <th>Question</th>
-                    <th>Response</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>What have you accomplished between the last standup meeting and now?</td>
-                    <td>{window.localStorage.getItem("one")}</td>
-                    </tr>
-                    <tr>
-                    <td>What are you going to work on next?</td>
-                    <td>{window.localStorage.getItem("two")}</td>
-                    </tr>
-                    <tr>
-                    <td>Are you stuck and need help?</td>
-                    <td>{determineHelp()}</td>
-                    </tr>
-                </tbody>
-                </Table>
+                <div className="Tablef" >
+
+                    <Table striped bordered hover variant="dark">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Response</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>What have you accomplished since the last standup?</td>
+                                <td>{window.localStorage.getItem("one")}</td>
+                            </tr>
+                            <tr>
+                                <td>What are you going to work on next?</td>
+                                <td>{window.localStorage.getItem("two")}</td>
+                            </tr>
+                            <tr>
+                                <td>Are you stuck and need help?</td>
+                                <td>{determineHelp()}</td>
+                            </tr>
+                        </tbody>
+
+                    </Table>
+
+                </div>
                 <br></br><br></br><br></br><br></br>
-                <Form.Control size="lg" type="text" placeholder={window.localStorage.getItem("email")} onChange={(e) => changeEmail(e.target.value)}/>
-                {/* <Button variant="primary">Send E-mail</Button> */}
+                <Form.Control size="lg" type="text" placeholder={email} onChange={(e) => setEmail(e.target.value)} />
                 <br></br>
-                <div className="button_1 button_2">Send E-mail </div>
+                <a href={mailLink()} target="_blank"><div className="button_1 button_2" >Send E-mail </div></a>
                 <br></br><br></br>
                 {/* <Button variant="primary">Restart Standup</Button> */}
-                <div className="button_1 button_2" onClick={() => reset()} href>Restart </div>
+                <a href="/landing" onClick={() => reset()}><div className="button_1 button_2" >Restart </div></a>
 
             </Container>
         </div>

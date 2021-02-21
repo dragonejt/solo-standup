@@ -18,6 +18,7 @@ function Help({ updateStep, three, updateThree }) {
     <div className="Help">
       <br />
       <h1>Are you stuck? Do you need help?</h1>
+      <br />
       <h2>Remember to ask for help from a mentor or a Senior Engineer if you are blocked.</h2>
       {/* <Button variant="primary" onClick={() => changeThree(1)}>Yes</Button> */}
 

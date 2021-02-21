@@ -18,7 +18,7 @@ function Progress({ updateStep, one, updateOne}) {
         <div className="Progress">
             <Container>
                 <Jumbotron>
-                    <h1 className="question">What have you accomplished between the last standup meeting and now?</h1>
+                    <h1 className="question">What have you accomplished since the last standup?</h1>
                     <br className="my-3" />
                     <form>
                         <Form.Control size="lg" type="text" placeholder={one} onChange={(e) => changeOne(e.target.value)}/>
