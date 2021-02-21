@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Jumbotron, Form, FormGroup, FormControl, FormLabel, Table } from 'react-bootstrap';
 
-const sgMail = require('@sendgrid/mail');
-require('dotenv').config();
-
-sgMail.setApiKey("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");
-
-
 function Done({ updateStep, one, two, three, updateOne, updateTwo, updateThree }) {
 
     useEffect(() => {

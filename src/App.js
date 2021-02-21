@@ -14,7 +14,6 @@ import Progress from './components/progress/Progress';
 import WhatsNext from './components/whatsnext/WhatsNext';
 import Help from './components/help/Help';
 import Done from './components/done/Done';
-import dotenv from 'dotenv';
 
 function App() {
   //0 is homepage
