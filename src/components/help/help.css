@@ -1,0 +1,22 @@
+
+  
+
+  .button_1 {
+    color: #007BFF;
+    border: 2px solid ;
+    border-radius: 70px;
+    width:200px;
+    padding: 18px 36px;
+    display: inline-block;
+    font-family: "Segoe UI", Monaco, monospace;
+    font-size: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 ;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+  }
+  .button_2:hover {
+    box-shadow: inset 400px 0 0 0;
+  }

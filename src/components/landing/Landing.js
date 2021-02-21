@@ -19,7 +19,8 @@ function Landing({ updateStep }) {
           <p className="lead subtitle">Like having a standup meeting, but just with yourself</p>
           <br className="my-3"/>
           <p>
-            <Button variant="primary" size="lg" href="/progress" id="start">Start Your Standup</Button>
+            {/* <Button variant="primary" size="lg" href="/progress" id="start">Start Your Standup</Button> */}
+            <a href="/progress"><div className="button_1 button_2">Begin</div></a>
           </p>
         </Jumbotron>
       </Container>

@@ -3,15 +3,16 @@ import { Container, Button, Jumbotron, Form, FormGroup, FormControl, FormLabel }
 import './progress.css'
 
 
-function Progress({ updateStep, one, updateOne }) {
+function Progress({ updateStep, one, updateOne}) {
 
     useEffect(() => {
         updateStep(1);
     })
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
-        alert(`Submitting Name ${one}`)
+    function changeOne(newOne) {
+        var str = newOne.toString();
+        window.localStorage.setItem("one", str);
+        updateOne(str);
     }
     return (
         <div className="Progress">
@@ -19,21 +20,14 @@ function Progress({ updateStep, one, updateOne }) {
                 <Jumbotron>
                     <h1 className="question">What have you accomplished between the last standup meeting and now?</h1>
                     <br className="my-3" />
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            Frirst Name:
-                        <input
-                                type="text"
-                                value={one}
-                                onChange={e => updateOne(e.target.value)}
-                            />
-                        </label>
-                        <input type="submit" value="Submit" />
+                    <form>
+                        <Form.Control size="lg" type="text" placeholder={one} onChange={(e) => changeOne(e.target.value)}/>
                     </form>
                     <br className="my-3" />
-                    <p>
-                        <Button variant="primary" size="lg" id="submit">Next -></Button>
-                    </p>
+
+                    <a href="/whatsnext"><div className="button_1 button_2">Next </div></a>
+                    
+
                 </Jumbotron>
             </Container>
         </div>

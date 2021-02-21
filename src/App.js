@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,8 +11,10 @@ import './App.css';
 import Navi from './components/navi/Navi';
 import Landing from './components/landing/Landing';
 import Progress from './components/progress/Progress';
+import WhatsNext from './components/whatsnext/WhatsNext';
 import Help from './components/help/Help';
 import Done from './components/done/Done';
+import dotenv from 'dotenv';
 
 function App() {
   //0 is homepage
@@ -23,7 +25,7 @@ function App() {
   const [step, setStep] = useState(0);
   const [one, setOne] = useState("Hello");
   const [two, setTwo] = useState("");
-  const [three, setThree] = useState(); //0 is no, 1 is yes
+  const [three, setThree] = useState(-1); //0 is no, 1 is yes
   const updateStep = (stepNumber) => {
     setStep(stepNumber);
   }
@@ -36,16 +38,25 @@ function App() {
   const updateThree = (three) => {
     setThree(three)
   }
+  useEffect(() => {
+    updateOne(window.localStorage.getItem("one"));
+    updateTwo(window.localStorage.getItem("two"));
+    updateThree(window.localStorage.getItem("three"));
+  })
+
   return (
     <div className="App">
       <Navi step={step} updateStep={updateStep} />
       <Router>
         <Switch>
           <Route path="/done">
-            <Done updateStep={updateStep} three={three} updateThree={updateThree} />
+            <Done updateStep={updateStep} one={one} two={two} three={three} updateOne={updateOne} updateTwo={updateTwo} updateThree={updateThree}/>
           </Route>
           <Route path="/progress">
             <Progress updateStep={updateStep} one={one} updateOne={updateOne} />
+          </Route>
+          <Route path="/whatsnext">
+            <WhatsNext updateStep={updateStep} two={two} updateTwo={updateTwo} />
           </Route>
           <Route path="/help">
             <Help updateStep={updateStep} three={three} updateThree={updateThree} />
