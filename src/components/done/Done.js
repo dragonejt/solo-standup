@@ -35,7 +35,7 @@ function Done({ updateStep, one, two, three, updateOne, updateTwo, updateThree }
 
                 <div className="Tablef" >
 
-                    <Table striped bordered hover variant="dark">
+                    <Table striped bordered hover>
                         <thead>
                             <tr>
                                 <th>Question</th>
