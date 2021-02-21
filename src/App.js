@@ -1,23 +1,34 @@
+import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import './App.css';
+import Navi from './components/navi/Navi';
+import Landing from './components/Landing';
 
 function App() {
+  const [step, setStep] = useState(2);
+  const [one, setOne] = useState("");
+  const [two, setTwo] = useState("");
+  const [three, setThree] = useState(0);
+  const updateStep = (stepNumber) => {
+    setStep(stepNumber);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navi step={step} updateStep={updateStep} />
+      <Router>
+        <Switch>
+          <Route path="/">
+            <Landing updateStep={updateStep} />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
